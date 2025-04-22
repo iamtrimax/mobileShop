@@ -1,0 +1,17 @@
+/* .imgProduct {
+    margin: 20px 5px 20px 0;
+    object-fit: contain;
+    justify-content: flex-start;
+    width: 50px;
+    height: 50px;
+  } */
+  .card-img-top {
+    object-fit: contain;
+    margin-top: 20px;
+  }
+  .card-text {
+    color: red;
+  }
+  .sellingPrice{
+    text-decoration: line-through;
+  }

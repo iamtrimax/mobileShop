@@ -1,0 +1,30 @@
+header{
+    margin:auto;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+form{
+    justify-content: center;
+}
+input{
+    width: 400px !important;
+}
+
+.navbar {
+    white-space: nowrap!important; /* Ngăn chữ xuống dòng */
+    flex-wrap: nowrap !important;   /* Ngăn các phần tử xuống dòng */
+}
+.dropdown-toggle::after {
+    display: none !important;
+  }
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+  border: none !important;
+  box-shadow: none !important;
+}
+.dropdown-item:hover {
+    background-color: #0d6efd !important; /* Bootstrap primary blue */
+    color: white !important;
+}

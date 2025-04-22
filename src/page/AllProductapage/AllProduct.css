@@ -1,0 +1,43 @@
+.upload {
+    z-index: 100;
+  }
+.upload-box {
+    width: 100%;
+    height: 150px;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  .upload-box img {
+    max-height: 100%;
+    max-width: 100%;
+    display: none;
+  }
+  .upload-box i {
+    font-size: 24px;
+    color: #6c757d;
+  }
+  .error-text {
+    color: red;
+    font-size: 14px;
+    display: none;
+  }
+  .imgProduct {
+    margin: 20px 5px 20px 0;
+    object-fit: contain;
+    justify-content: flex-start;
+  }
+  .modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* đen mờ */
+    z-index: 999; /* thấp hơn modal */
+  }
