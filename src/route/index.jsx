@@ -11,6 +11,7 @@ import AdminRoute from "./AdminRoute";
 import Page403 from "../page/403Page/Page403";
 import Products from "../page/products/Products";
 import ProductDetail from "../page/ProductDetail/productDetail";
+import Cart from "../page/Cart/Cart";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -39,6 +40,10 @@ const Router = createBrowserRouter([
             {
                 path:"/product/:id",
                 element:<ProductDetail/>
+            },
+            {
+                path:"/cart",
+                element:<Cart/>
             },
             {
                 path:"/admin-panel",

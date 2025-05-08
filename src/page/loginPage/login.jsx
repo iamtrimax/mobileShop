@@ -23,7 +23,7 @@ const Login = () => {
             }
         })
     }
-    const{fetchUserDetails} = useContext(Context)
+    const{fetchUserDetails, fetchCountCarts } = useContext(Context)
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -42,6 +42,7 @@ const Login = () => {
             localStorage.setItem("token", dataApi.data)
             console.log(dataApi);
             fetchUserDetails()
+            fetchCountCarts()
             navigate("/")
         }
         if(dataApi.error){

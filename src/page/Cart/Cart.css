@@ -1,0 +1,24 @@
+.no-spinner {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+@media (max-width: 576px) {
+  .quantity-input {
+    width: 40px;
+    font-size: 0.8rem;
+  }
+  .quantity-control {
+    padding: 0 6px;
+  }
+  .card-body span,
+  .card-body h5 {
+    font-size: 0.9rem;
+  }
+}

@@ -12,6 +12,7 @@ import fetchWithAuth from "./utils/fetchWithAuth";
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true); // State để kiểm tra đang load dữ liệu
+  const [countCarts, setCountCarts] = useState(0) 
   const fetchUserDetails = async () => {
     try {
       const dataReponse = await fetchWithAuth("http://localhost:3000/api/user-details", {
@@ -23,7 +24,8 @@ function App() {
       });
 
       const dataApi = await dataReponse.json();
-
+      console.log(dataApi);
+      
       if (dataApi.success) {
         dispatch(setUserDetails(dataApi)); // Lưu user vào Redux
       }
@@ -33,10 +35,24 @@ function App() {
       setLoading(false); // Set loading là false khi dữ liệu đã tải xong
     }
   };
+  const fetchCountCarts = async() =>{
+    const fetchApi = await fetchWithAuth("http://localhost:3000/api/count-carts",{
+      method: "get",
+      credentials: "include",
+    })
+    const dataRes = await fetchApi.json();
+    if(dataRes.success) {
+      setCountCarts(dataRes?.data?.count);
+    }
+    if(dataRes.error) {
+      console.log(dataRes.message);
+    }
+  }
   useEffect(() => {
     
     fetchUserDetails();
-  }, [dispatch]);
+    fetchCountCarts();
+  }, []);
 
   
   if (loading) {
@@ -45,7 +61,7 @@ function App() {
   }
 
   return (
-    <Context.Provider value={{ fetchUserDetails }}>
+    <Context.Provider value={{ fetchUserDetails, countCarts, fetchCountCarts }}>
       <ToastContainer position="top-right" />
       <Header />
       <main className="main">

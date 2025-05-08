@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import displayCurrency from '../../helper/displayCurrency'
 import { Link } from 'react-router-dom'
+import addToCart from '../../helper/addToCart'
+import Context from '../../context/context'
 
 const CardProduct = ({data}) => {
+  const {fetchCountCarts} = useContext(Context)
+  const handleAddToCart = async(e, productId) => {
+    await addToCart(e,productId)
+    fetchCountCarts()
+  }
   return (
    <>
          <Link to={`/product/${data?._id}`} className="card mx-5 mb-5 text-decoration-none" style={{ width: "250px" }}>
@@ -30,7 +37,7 @@ const CardProduct = ({data}) => {
                )|| ""}
              </div>
              <div className="action d-grid">
-               <button className= "btn btn-outline-primary btn-block">
+               <button className= "btn btn-outline-primary btn-block" onClick={(e) => {handleAddToCart(e, data?._id)}}>
                 <span>Thêm vào giỏ hàng</span>
                </button>
              </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,13 +10,14 @@ import { setUserDetails } from "../../store/userSlice";
 import logo from "/src/assets/logo.png";
 import "../Header/Header.css";
 import fetchWithAuth from "../../utils/fetchWithAuth";
+import Context from "../../context/context";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useSelector((state) => state?.user?.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const context = useContext(Context);
   const handleLogout = async () => {
     const fethData = await fetchWithAuth("http://localhost:3000/api/logout", {
       method: "get",
@@ -27,7 +28,7 @@ const Header = () => {
     if (data.success) {
       toast.success(data.message);
       dispatch(setUserDetails(null));
-      localStorage.clear("token")
+      localStorage.clear("token");
       navigate("/");
     } else {
       toast.error(data.message);
@@ -96,9 +97,12 @@ const Header = () => {
                 {user?.data?._id ? (
                   <>
                     <li className="nav-item">
-                      <a className="nav-link" href="#">
+                      <Link to={"cart"} className="nav-link position-relative">
                         <FaShoppingCart className="fs-3" />
-                      </a>
+                        <div className="countCart bg-danger position-absolute top-0 end-0">
+                          <p className="">{context?.countCarts}</p>
+                        </div>
+                      </Link>
                     </li>
 
                     {/* User Dropdown */}
@@ -123,7 +127,10 @@ const Header = () => {
                           }`}
                         >
                           <li>
-                            <Link to={"admin-panel"} className="dropdown-item text-white">
+                            <Link
+                              to={"admin-panel"}
+                              className="dropdown-item text-white"
+                            >
                               Admin panel
                             </Link>
                           </li>
