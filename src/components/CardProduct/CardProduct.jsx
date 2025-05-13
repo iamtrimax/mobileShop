@@ -3,6 +3,7 @@ import displayCurrency from '../../helper/displayCurrency'
 import { Link } from 'react-router-dom'
 import addToCart from '../../helper/addToCart'
 import Context from '../../context/context'
+import ScrollTop from '../../helper/Scrolltop'
 
 const CardProduct = ({data}) => {
   const {fetchCountCarts} = useContext(Context)
@@ -19,6 +20,7 @@ const CardProduct = ({data}) => {
              alt="Card image"
              width="100px"
              height="100px"
+             onClick={ScrollTop}
            />
            <div className="card-body">
              <h4 className="card-title fs-6 text-centerA">{data.productName}</h4>

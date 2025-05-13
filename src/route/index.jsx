@@ -12,6 +12,7 @@ import Page403 from "../page/403Page/Page403";
 import Products from "../page/products/Products";
 import ProductDetail from "../page/ProductDetail/productDetail";
 import Cart from "../page/Cart/Cart";
+import PrivateRoute from "./PrivateRoute";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -43,7 +44,11 @@ const Router = createBrowserRouter([
             },
             {
                 path:"/cart",
-                element:<Cart/>
+                element:(
+                    <PrivateRoute>
+                        <Cart/>
+                    </PrivateRoute>
+                )
             },
             {
                 path:"/admin-panel",
